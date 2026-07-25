@@ -18,14 +18,18 @@
 
 A small hobby project I built for fun and am giving away. It does what some of the
 paid or account-based sim remotes do, but it's free, needs no account, and stays on
-your own network. It ships set up for **GSPro**, but you can point it at
-**E6 Connect**, **TGC**, or any Windows program.
+your own network. It ships set up for **GSPro**, and you can point it at whatever
+else you play — or at any Windows program at all.
 
 ## What it looks like
 
 | Controller (on an iPad) | Layout editor |
 |:---:|:---:|
 | ![Controller](assets/controller.png) | ![Layout editor](assets/layouts.png) |
+
+| Theme editor | Bind by game action |
+|:---:|:---:|
+| ![Theme editor](assets/themes.png) | ![Game action picker](assets/keymap.png) |
 
 | Pair a device | On-screen keyboard |
 |:---:|:---:|
@@ -36,11 +40,16 @@ your own network. It ships set up for **GSPro**, but you can point it at
 - **Buttons** for any hotkey — tap, hold-to-aim, key combos, or auto-repeat
 - **A trackpad** to move the mouse and click through menus from your seat
 - **An on-screen keyboard** that types straight to the PC
-- **Macros** — chain clicks, keys, and delays into a single tap
-- **Fully customizable layouts** — drag-and-drop grids with multiple pages; save a
-  different layout per app
+- **Macros** — chain clicks, drags, keys, and delays into a single tap
+- **Fully customizable layouts** — drag-and-drop grids with multiple pages, a big
+  icon set and ten button colours; save a different layout per app, and export one
+  to a file to back it up or share it
+- **Bind by game action** — pick "Flyover" or "Aim Left" from a labelled list and
+  the key fills itself in. GSPro's keymap is built in; import your own for other games
+- **Themes you can make** — a built-in editor with live preview and contrast checks,
+  applied to the dashboard and every connected device at once
 - **Auto-focuses your sim** before each press, so there's no alt-tabbing
-- Themes, QR-code pairing, and an optional PIN
+- QR-code pairing and an optional PIN
 
 ## Requirements
 
@@ -66,7 +75,7 @@ That's expected for unsigned apps — click **More info → Run anyway**.
 ## Updating
 
 Download the newest zip, quit the running app from its tray icon, unzip the new version
-over the old folder, and relaunch — your settings and layouts are kept.
+over the old folder, and relaunch — your settings, layouts, and themes are kept.
 
 ## Privacy & network
 
