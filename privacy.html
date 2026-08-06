@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Sim Golf Hub</title>
+<style>
+  /* Tokens. Neutrals carry a slight green bias so they belong to Sim Golf Hub rather than
+     reading as default greys. Components style through the tokens only, never inside a
+     media query, so the viewer's theme toggle can override in both directions. */
+  :root {
+    --ground:  #fcfdfb;
+    --panel:   #f2f6f2;
+    --ink:     #1a211c;
+    --muted:   #5c6660;
+    --rule:    #e2e8e3;
+    --accent:  #2f6b46;
+    --shadow:  0 1px 2px rgba(26, 33, 28, .05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0f1512;
+      --panel:  #161e19;
+      --ink:    #e4eae6;
+      --muted:  #94a19a;
+      --rule:   #26302a;
+      --accent: #6fbf8e;
+      --shadow: none;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #fcfdfb; --panel: #f2f6f2; --ink: #1a211c;
+    --muted: #5c6660;  --rule: #e2e8e3;  --accent: #2f6b46;
+    --shadow: 0 1px 2px rgba(26, 33, 28, .05);
+  }
+  :root[data-theme="dark"] {
+    --ground: #0f1512; --panel: #161e19; --ink: #e4eae6;
+    --muted: #94a19a;  --rule: #26302a;  --accent: #6fbf8e;
+    --shadow: none;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 3.5rem 1.5rem 5rem;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc {
+    max-width: 44rem;
+    margin: 0 auto;
+    display: grid;
+    gap: 2.75rem;
+  }
+
+  header { display: grid; gap: .5rem; }
+  .eyebrow {
+    margin: 0;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+  }
+  .dateline { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  section { display: grid; gap: .85rem; }
+  section + section { border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+
+  h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    line-height: 1.25;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+  }
+  h3 {
+    margin: .75rem 0 0;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: var(--accent);
+  }
+  p  { margin: 0; max-width: 68ch; }
+  ul { margin: 0; padding-left: 1.15rem; display: grid; gap: .5rem; max-width: 68ch; }
+  li { margin: 0; }
+  strong { font-weight: 600; }
+
+  .summary {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    padding: 1.35rem 1.5rem;
+    display: grid;
+    gap: .8rem;
+  }
+
+  .table-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; font-size: .95rem; }
+  caption {
+    text-align: left;
+    color: var(--muted);
+    font-size: .9rem;
+    padding-bottom: .6rem;
+  }
+  th, td { text-align: left; padding: .65rem .75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  thead th {
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom-color: var(--ink);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+
+  code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .88em;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: .1em .35em;
+    overflow-wrap: anywhere;
+  }
+
+  a { color: var(--accent); text-underline-offset: .15em; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+    color: var(--muted);
+    font-size: .92rem;
+  }
+  footer p { max-width: 68ch; }
+</style>
+</head>
+<body>
+
+<div class="doc">
+
+  <header>
+    <p class="eyebrow">Sim Golf Hub</p>
+    <h1>Privacy Policy</h1>
+    <p class="dateline">Last updated 4 August 2026</p>
+  </header>
+
+  <div class="summary">
+    <p><strong>The short version.</strong> Sim Golf Hub runs entirely on your own PC and your own
+    Wi&#8209;Fi network. There is no account to create, no cloud service behind it, and no analytics
+    or tracking of any kind. Nothing you do in the app is sent anywhere.</p>
+    <p>The only connection it ever makes to the internet is a once&#8209;a&#8209;day check for a
+    newer version. Everything else — your layouts, your settings, your logs — stays in a folder on
+    your PC that you can open, inspect, and delete at any time.</p>
+  </div>
+
+  <section>
+    <h2>Who this is from</h2>
+    <p>Sim Golf Hub is published by Brian Stephens Jr. If you have a question about this policy or
+    about what the app does with your information, contact
+    <a href="mailto:brian.stephens.jr+simgolfhub@gmail.com">brian.stephens.jr+simgolfhub@gmail.com</a>.</p>
+  </section>
+
+  <section>
+    <h2>What Sim Golf Hub does not do</h2>
+    <ul>
+      <li>It does not require or offer an account, login, or registration.</li>
+      <li>It does not collect analytics, telemetry, usage statistics, or crash reports.</li>
+      <li>It does not upload your settings, layouts, macros, or activity anywhere.</li>
+      <li>It does not contain advertising, and it does not sell or share information with anyone.</li>
+      <li>It does not use cookies or tracking technologies to profile you.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Information the app handles, and where it stays</h2>
+    <p>Everything below is stored <strong>only on your PC</strong>, in your own Windows user profile
+    at <code>%LOCALAPPDATA%\SimGolfHub</code>. You can open that folder at any time from the app:
+    <strong>Config → Data → Open folder</strong>.</p>
+
+    <div class="table-wrap">
+      <table>
+        <caption>Every file the app creates, and why it exists.</caption>
+        <thead>
+          <tr><th scope="col">What</th><th scope="col">Where it lives</th><th scope="col">Why it exists</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Your settings — network port, device name, pairing PIN, theme and preferences</td>
+            <td><code>config.json</code></td>
+            <td>So the app works the way you set it up.</td>
+          </tr>
+          <tr>
+            <td>Your layouts and macros</td>
+            <td><code>profiles\</code></td>
+            <td>The control pads you build and the steps they play back.</td>
+          </tr>
+          <tr>
+            <td>Your themes and keymaps</td>
+            <td><code>themes\</code>, <code>keymaps\</code></td>
+            <td>Appearance, and the named actions used by the layout editor.</td>
+          </tr>
+          <tr>
+            <td>Window position and size</td>
+            <td><code>window.json</code></td>
+            <td>So the app window reopens where you left it.</td>
+          </tr>
+          <tr>
+            <td>Local activity logs</td>
+            <td><code>logs\</code></td>
+            <td>A rolling record of what the app did, so problems can be diagnosed.</td>
+          </tr>
+          <tr>
+            <td>Dashboard browser data</td>
+            <td>a WebView2 folder in the same directory</td>
+            <td>The dashboard is a local web page rendered by Microsoft Edge WebView2, which keeps
+                its own cache there. It loads only pages served by the app itself.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Devices you connect</h3>
+    <p>When a phone or tablet connects, the app knows its <strong>local network address</strong> and
+    the <strong>name the device reports</strong>, and shows them on the dashboard so you can see what
+    is connected. This is held in memory while the device is connected, and connection events are
+    recorded in the local logs described above. It is never transmitted off your PC.</p>
+
+    <h3>Optional diagnostic logging</h3>
+    <p>The app has a diagnostic setting, <strong>off by default</strong>, that records the individual
+    button presses arriving from a controller. It exists so a problem can be traced, it can only be
+    turned on from the PC itself, and what it records is written to the same local log files.
+    Turning it off stops the recording; deleting the <code>logs</code> folder removes what was
+    recorded.</p>
+  </section>
+
+  <section>
+    <h2>Network connections the app makes</h2>
+
+    <h3>On your local network</h3>
+    <p>Sim Golf Hub runs a small web server on your PC so your phone or tablet can load the
+    controller and send button presses to it. It also announces itself on your local network (via
+    mDNS) so devices can find the PC by name instead of by a numeric address. Both are confined to
+    your own network.</p>
+    <p><strong>Worth knowing:</strong> that local connection is ordinary unencrypted HTTP, which is a
+    deliberate choice for a device on your own trusted home network — it avoids the certificate
+    warnings that would otherwise appear on every phone. It is protected by a pairing PIN, unique to
+    your installation, which a device must supply before it can send anything. If you do not trust
+    the network you are on, do not use the app on it.</p>
+
+    <h3>To the internet: the version check, and nothing else</h3>
+    <p>Once a day the app checks whether a newer version exists. That is the <em>only</em> internet
+    connection it makes, and it works differently depending on which build you installed:</p>
+    <ul>
+      <li><strong>Microsoft Store version</strong> — it asks Windows whether an update is waiting.
+          Windows handles the request; the app itself contacts no one.</li>
+      <li><strong>Standalone version</strong> — it requests the public list of releases from GitHub.
+          The request contains no information about you or your use of the app; like any web request
+          it necessarily reveals your IP address to the server being contacted, which in this case
+          is GitHub's.</li>
+    </ul>
+    <p>Nothing is downloaded or installed automatically, and no personal information is sent either
+    way. If the check is blocked, or you are offline, the app carries on working normally.</p>
+  </section>
+
+  <section>
+    <h2>Other parties</h2>
+    <p>Sim Golf Hub does not disclose your information to anyone. Three parties are involved only in
+    the limited ways described here:</p>
+    <ul>
+      <li><strong>Microsoft</strong> — if you installed from the Microsoft Store, Windows performs
+          the update check and manages installation, under Microsoft's own privacy terms.</li>
+      <li><strong>GitHub</strong> — if you installed the standalone version, the daily version check
+          reaches GitHub's public API, as described above.</li>
+      <li><strong>Stripe</strong> — the app shows an optional donation link. Donations are entirely
+          voluntary and unlock nothing. If you choose to follow it, the link opens in your own web
+          browser and you leave the app; any payment details you enter go to Stripe under
+          <a href="https://stripe.com/privacy">Stripe's privacy policy</a>, and Sim Golf Hub never
+          sees or stores them.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How your information is kept</h2>
+    <p>The files listed above live in your Windows user profile and are protected by your Windows
+    account, the same as your other documents. Sim Golf Hub does not encrypt them separately, and
+    does not need to: they never leave the PC, and anyone who can already read your user profile can
+    read your other files too. There is no server, and no copy of your data anywhere else.</p>
+    <p>The app keeps your data for as long as you keep it. Nothing expires and nothing is
+    uploaded.</p>
+  </section>
+
+  <section>
+    <h2>Your choices and controls</h2>
+    <ul>
+      <li><strong>See everything the app has stored</strong> — <strong>Config → Data → Open
+          folder</strong>. It is all plain files, readable and deletable.</li>
+      <li><strong>Erase it</strong> — <strong>Config → Data → Reset app data</strong> deletes your
+          settings and layouts and starts fresh. You can also delete the folder yourself while the
+          app is closed.</li>
+      <li><strong>Control who can connect</strong> — the pairing PIN under <strong>Config →
+          Network</strong> can be changed or required, so only a device you have given it to can
+          send input.</li>
+      <li><strong>Stop the diagnostic logging</strong> — it is off unless you turn it on, and can be
+          turned off again at any time.</li>
+      <li><strong>Stop the version check</strong> — there is no in&#8209;app switch for it, but
+          blocking the app in your firewall or going offline prevents it, and the app keeps working.
+          You simply will not be told when a new version is out.</li>
+      <li><strong>Remove the app</strong> — uninstall it like any Windows app. Your settings and
+          layouts are deliberately left behind so a reinstall keeps them; delete
+          <code>%LOCALAPPDATA%\SimGolfHub</code> yourself if you want them gone.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Children</h2>
+    <p>Sim Golf Hub is a utility for golf simulator software and is not directed at children. It does
+    not knowingly collect information from anyone, of any age.</p>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If the app ever changes what it does with information, this policy will be updated before that
+    change ships, and the date at the top will change with it.</p>
+  </section>
+
+  <footer>
+    <p>Sim Golf Hub — free for personal use, provided “as is”. The full licence terms are available
+    inside the app under <strong>Config → About → License</strong>.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
