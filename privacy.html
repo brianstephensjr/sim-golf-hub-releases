@@ -159,7 +159,7 @@
   <header>
     <p class="eyebrow">Sim Golf Hub</p>
     <h1>Privacy Policy</h1>
-    <p class="dateline">Last updated 4 August 2026</p>
+    <p class="dateline">Last updated November 13, 2026</p>
   </header>
 
   <div class="summary">
@@ -184,6 +184,8 @@
       <li>It does not require or offer an account, login, or registration.</li>
       <li>It does not collect analytics, telemetry, usage statistics, or crash reports.</li>
       <li>It does not upload your settings, layouts, macros, or activity anywhere.</li>
+      <li>It does not record your screen. Mirrors (below) go live to your own devices and are never
+          saved.</li>
       <li>It does not contain advertising, and it does not sell or share information with anyone.</li>
       <li>It does not use cookies or tracking technologies to profile you.</li>
     </ul>
@@ -191,9 +193,11 @@
 
   <section>
     <h2>Information the app handles, and where it stays</h2>
-    <p>Everything below is stored <strong>only on your PC</strong>, in your own Windows user profile
-    at <code>%LOCALAPPDATA%\SimGolfHub</code>. You can open that folder at any time from the app:
-    <strong>Config → Data → Open folder</strong>.</p>
+    <p>Everything below is stored <strong>only on your PC</strong>, in your own Windows user profile,
+    in a folder that is usually <code>%LOCALAPPDATA%\SimGolfHub</code>. The Microsoft Store version
+    keeps it with its own app data under <code>%LOCALAPPDATA%\Packages</code> instead, unless the
+    folder was already there from the standalone version. Either way, <strong>Config → Data</strong>
+    shows where it is, and <strong>Open folder</strong> opens it.</p>
 
     <div class="table-wrap">
       <table>
@@ -213,6 +217,36 @@
             <td>The control pads you build and the steps they play back.</td>
           </tr>
           <tr>
+            <td>Your profiles — the sim program each one is for, its settings, and its mirrors (the
+                title of the window each one shows and the part you selected)</td>
+            <td><code>apps\</code></td>
+            <td>So each sim gets its own layouts, theme and keymap.</td>
+          </tr>
+          <tr>
+            <td>Pictures you add to buttons, and smaller copies made from them</td>
+            <td><code>images\</code>, <code>cache\</code></td>
+            <td>So your buttons can show them.</td>
+          </tr>
+          <tr>
+            <td>Devices you have connected — the name and type each one reports, its screen size, when
+                it was last seen, and the layout it shows</td>
+            <td><code>devices.json</code></td>
+            <td>So each device keeps its own layout, and a layout can be shaped for a device that
+                isn't connected.</td>
+          </tr>
+          <tr>
+            <td>An installer's branding, only if an installer set it up — their name, logos, and
+                support details</td>
+            <td><code>branding.json</code></td>
+            <td>So a PC set up by an installer shows who to contact.</td>
+          </tr>
+          <tr>
+            <td>A one&#8209;time copy of your layouts, settings and devices from before version 1.4.0</td>
+            <td><code>pre-apps-backup\</code></td>
+            <td>Made once when updating from an earlier version, in case anything needs recovering.
+                The app never reads it.</td>
+          </tr>
+          <tr>
             <td>Your themes and keymaps</td>
             <td><code>themes\</code>, <code>keymaps\</code></td>
             <td>Appearance, and the named actions used by the layout editor.</td>
@@ -229,7 +263,7 @@
           </tr>
           <tr>
             <td>Dashboard browser data</td>
-            <td>a WebView2 folder in the same directory</td>
+            <td><code>%TEMP%\SimGolfHub\WebView2</code>, in your Windows temporary folder</td>
             <td>The dashboard is a local web page rendered by Microsoft Edge WebView2, which keeps
                 its own cache there. It loads only pages served by the app itself.</td>
           </tr>
@@ -239,9 +273,25 @@
 
     <h3>Devices you connect</h3>
     <p>When a phone or tablet connects, the app knows its <strong>local network address</strong> and
-    the <strong>name the device reports</strong>, and shows them on the dashboard so you can see what
-    is connected. This is held in memory while the device is connected, and connection events are
-    recorded in the local logs described above. It is never transmitted off your PC.</p>
+    the <strong>name and type the device reports</strong>, and shows them on the dashboard so you can
+    see what is connected. The address is held in memory while the device is connected, and
+    connection events are recorded in the local logs described above. The name, the type, the
+    device's screen size and the layout it shows are kept in <code>devices.json</code>, so the app
+    remembers the device next time. None of it is ever transmitted off your PC.</p>
+
+    <h3>Mirrors of your sim's windows</h3>
+    <p>A mirror shows part of your sim's window, such as its minimap, live on a phone or tablet.
+    Mirroring is <strong>off until you turn it on</strong> for a profile. While it's on, the app
+    captures a window only while a device or the dashboard is showing one of its mirrors, and only
+    the windows of that profile's own program, never your browser or anything else. The pictures go
+    straight to the devices showing them, over your local network, and are held in memory only as
+    long as it takes to send them. They are never saved and never leave your network. Touches on a
+    mirror come back to the PC as clicks and drags in the sim's window. What's saved is each
+    mirror's setup, in <code>apps\</code>: its name, the title of the window it shows, and the part
+    you selected.</p>
+    <p>Windows normally draws a yellow border around a window that is being captured. On Windows 11
+    the app turns that border off; the Microsoft Store version asks you first, and you can change
+    the answer later in Windows Settings.</p>
 
     <h3>Optional diagnostic logging</h3>
     <p>The app has a diagnostic setting, <strong>off by default</strong>, that records the individual
@@ -256,14 +306,15 @@
 
     <h3>On your local network</h3>
     <p>Sim Golf Hub runs a small web server on your PC so your phone or tablet can load the
-    controller and send button presses to it. It also announces itself on your local network (via
+    controller, send button presses to it, and, with Mirroring on, show its mirrors. It also announces itself on your local network (via
     mDNS) so devices can find the PC by name instead of by a numeric address. Both are confined to
     your own network.</p>
     <p><strong>Worth knowing:</strong> that local connection is ordinary unencrypted HTTP, which is a
     deliberate choice for a device on your own trusted home network — it avoids the certificate
     warnings that would otherwise appear on every phone. It is protected by a pairing PIN, unique to
-    your installation, which a device must supply before it can send anything. If you do not trust
-    the network you are on, do not use the app on it.</p>
+    your installation, which a device must supply before it can send anything or show a mirror.
+    Mirror pictures travel over this same connection. If you do not trust the network you are on,
+    do not use the app on it.</p>
 
     <h3>To the internet: the version check, and nothing else</h3>
     <p>Once a day the app checks whether a newer version exists. That is the <em>only</em> internet
@@ -312,20 +363,24 @@
     <ul>
       <li><strong>See everything the app has stored</strong> — <strong>Config → Data → Open
           folder</strong>. It is all plain files, readable and deletable.</li>
-      <li><strong>Erase it</strong> — <strong>Config → Data → Reset app data</strong> deletes your
-          settings and layouts and starts fresh. You can also delete the folder yourself while the
-          app is closed.</li>
+      <li><strong>Erase it</strong> — <strong>Config → Data → Reset all data</strong> deletes your
+          settings, profiles and layouts and starts fresh. To remove everything, delete the folder
+          yourself while the app is closed.</li>
       <li><strong>Control who can connect</strong> — the pairing PIN under <strong>Config →
           Network</strong> can be changed or required, so only a device you have given it to can
           send input.</li>
+      <li><strong>Stop mirroring</strong> — Mirroring is off unless you turn it on, on a profile's
+          Mirrors tab. Turning it off there stops all capture for that profile at once.</li>
       <li><strong>Stop the diagnostic logging</strong> — it is off unless you turn it on, and can be
           turned off again at any time.</li>
       <li><strong>Stop the version check</strong> — there is no in&#8209;app switch for it, but
           blocking the app in your firewall or going offline prevents it, and the app keeps working.
           You simply will not be told when a new version is out.</li>
-      <li><strong>Remove the app</strong> — uninstall it like any Windows app. Your settings and
-          layouts are deliberately left behind so a reinstall keeps them; delete
-          <code>%LOCALAPPDATA%\SimGolfHub</code> yourself if you want them gone.</li>
+      <li><strong>Remove the app</strong> — uninstall it like any Windows app. If the Microsoft
+          Store version made its own data folder, Windows removes that folder with the app.
+          Otherwise your settings and layouts are deliberately left behind in
+          <code>%LOCALAPPDATA%\SimGolfHub</code> so a reinstall keeps them; delete that folder
+          yourself if you want them gone.</li>
     </ul>
   </section>
 
@@ -342,7 +397,7 @@
   </section>
 
   <footer>
-    <p>Sim Golf Hub — free for personal use, provided “as is”. The full licence terms are available
+    <p>Sim Golf Hub — free for personal use, provided “as is”. The full license terms are available
     inside the app under <strong>Config → About → License</strong>.</p>
   </footer>
 
